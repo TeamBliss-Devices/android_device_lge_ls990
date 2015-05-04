@@ -24,9 +24,25 @@ BOARD_BLUEDROID_VENDOR_CONF := device/lge/ls990/bluetooth/vnd_g3.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/ls990/bluetooth
 BOARD_HAVE_BLUETOOTH_BCM := true
 
+BLISS_BUILD_BLOCK := 1
+BLISS_WIPE_CACHES := 1
+TARGET_TC_ROM :=4.8-sm
+TARGET_TC_KERNEL :=4.9-sm
+BLISSIFY :=true
+BLISS_O3 :=true
+BLISS_GRAPHITE :=false
+BLISS_STRICT :=false
+BLISS_KRAIT :=true
+
+TARGET_GCC_VERSION_EXP := $(TARGET_TC_ROM)
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
+
 # Kernel
-TARGET_KERNEL_CONFIG := cyanogenmod_ls990_defconfig
+#TARGET_KERNEL_CONFIG := cyanogenmod_ls990_defconfig
 TARGET_REQUIRES_BUMP := true
+TARGET_KERNEL_CONFIG := ls990_defconfig
+TARGET_KERNEL_SOURCE := kernel/lge/777jon
+TARGET_KERNEL_MODULES := true
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -52,3 +68,5 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 -include vendor/lge/ls990/BoardConfigVendor.mk
+
+-include vendor/bliss/config/sm.mk
